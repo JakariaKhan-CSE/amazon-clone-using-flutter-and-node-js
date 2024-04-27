@@ -19,11 +19,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           scaffoldBackgroundColor: GlobalVariables
               .backgroundColor, // all new scaffold er background color aita hobe
-          colorScheme: ColorScheme.light(
-            // aikhane dark dile instead of light. sob kisur background black hobe
-            primary: GlobalVariables
-                .secondaryColor, // sob kisur(button) foreground color aita hobe
-          ),
+          // colorScheme: ColorScheme.light(
+          //   // aikhane dark dile instead of light. sob kisur background black hobe
+          //   primary: GlobalVariables
+          //       .secondaryColor, // sob kisur(button) foreground color aita hobe
+          // ),
           appBarTheme: AppBarTheme(
               elevation:
                   0, // sob app ber er theme 0 hobe and icon color black hobe
