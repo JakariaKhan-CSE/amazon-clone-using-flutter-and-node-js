@@ -97,6 +97,26 @@ class _AuthScreenState extends State<AuthScreen> {
                     },
                   ),
                 ),
+                if(_auth == Auth.signin)
+                  Container(
+                    padding: EdgeInsets.all(8),
+                    color: GlobalVariables.backgroundColor,
+                    child: Form(
+                        key: _signInFormkey,
+                        child: Column(
+                          children: [
+
+                            CustomTextField(controller: _emailController, hintText: "Email"),
+                            SizedBox(height: 10,),
+                            CustomTextField(controller: _passwordController, hintText: "Password"),
+                            SizedBox(height: 10,),
+                            CustomButton(text: 'SignIn', onTap: (){
+
+                            })
+
+                          ],
+                        )),
+                  ),
               ],
             ),
           ),
