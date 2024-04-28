@@ -33,7 +33,7 @@ const userSchema =new mongoose.Schema({
 
                    
 
-                    return value.length>6; // value/passwortd 6 digit er beshi hole. ai jaiga theke return korbe. R na hole niser message show korbe
+                    return value.length>5; // value/passwortd 6 digit er beshi hole. ai jaiga theke return korbe. R na hole niser message show korbe
 
                 },
                 message: "Password must be 6 digits"

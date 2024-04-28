@@ -10,6 +10,7 @@ authRouter.get('/user',(req,res)=>{
 });
 // ('admin/signup') for admin api
 authRouter.post('/api/signup', async(req,res)=>{
+   try {
     const {name, email, password} = req.body;
 
     const existingUser =await  User.findOne({email});
@@ -26,7 +27,12 @@ authRouter.post('/api/signup', async(req,res)=>{
     });
 
     user = await user.save();  // all time use await when needed to connect database
-})
+
+    res.json(user); // client ke user data send kora hosse
+   } catch (error) {
+    res.status(500).json({error: error.message});
+   }
+});
 
 
 
