@@ -18,7 +18,8 @@ mongoose.connect(DB).then(()=>{
     console.log('Database connection successfull');
 }).catch((e)=>{
     console.log(e);
-})
+});
+
 app.listen(PORT, (req,res)=>{  
     
     console.log(`Connected port: ${PORT}`); 
