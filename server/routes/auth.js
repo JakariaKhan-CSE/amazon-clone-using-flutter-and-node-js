@@ -18,6 +18,14 @@ authRouter.post('/api/signup', async(req,res)=>{
         // return use na korle o kaj korbe. Kintu next step gulo execute korbe. Jodi return use kora hoi, tahole aikhane hold korbe
         return res.status(400).json({msg: "User with same email already exists"});
     }
+// const use na kore let/var use korte hobe karon user er value change korte hote pare
+    let user = new User({
+        email,
+        password,
+        name
+    });
+
+    user = await user.save();  // all time use await when needed to connect database
 })
 
 
