@@ -1,15 +1,25 @@
+// pass: w2A7f62jqN3kNVYs
+// user: jakaria
 
 const  express = require('express');
+const mongoose = require('mongoose');
 const PORT = 3000;
+const DB = 'mongodb+srv://jakaria:w2A7f62jqN3kNVYs@cluster0.pcdlcay.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
 
+const authRouter = require('./routes/auth');
 const app = express();
 
 
+//middleware
+app.use(authRouter);
 
-
-
-app.listen(PORT,  (req,res)=>{
-
-    console.log('Connected at port: '+PORT);
-    console.log(`Connected port: ${PORT}`);   // be careful use `` top of tab.  not '' top of shift
+// Connections
+mongoose.connect(DB).then(()=>{
+    console.log('Database connection successfull');
+}).catch((e)=>{
+    console.log(e);
+})
+app.listen(PORT, (req,res)=>{  
+    
+    console.log(`Connected port: ${PORT}`); 
 });
