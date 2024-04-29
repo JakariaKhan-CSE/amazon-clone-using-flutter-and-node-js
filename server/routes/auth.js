@@ -1,13 +1,9 @@
 const express = require('express');
 const User = require('../models/user');  // import models with collection name
-
+const bcryptjs = require('bcryptjs');
 const authRouter = express.Router();
 
-authRouter.get('/user',(req,res)=>{
-    res.json({
-        msg: "Jakaria"
-    });
-});
+
 // ('admin/signup') for admin api
 authRouter.post('/api/signup', async(req,res)=>{
    try {
@@ -19,10 +15,14 @@ authRouter.post('/api/signup', async(req,res)=>{
         // return use na korle o kaj korbe. Kintu next step gulo execute korbe. Jodi return use kora hoi, tahole aikhane hold korbe
         return res.status(400).json({msg: "User with same email already exists"});
     }
+
+    const hashPassword =await bcryptjs.hash(password,8);  // aita use kore password ke encrypt kora hosse. jate database hack holeo hacker password dekhte na pai
+
+
 // const use na kore let/var use korte hobe karon user er value change korte hote pare
     let user = new User({
         email,
-        password,
+        password: hashPassword,
         name
     });
 
