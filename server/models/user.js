@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const userSchema =new mongoose.Schema({
         name: {
-            type: String,
+            type: String,  // use type not typeof
             required: true,
             trim: true  // remove leading and trailing space
         },
@@ -16,7 +16,7 @@ const userSchema =new mongoose.Schema({
                     // aigulo hosse reject character
                     const re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-                    return value.match(re);
+                    return value.match(re);  // match korle niser message show korbe 
 
                 },
                 message: "Please enter a valid email address"
@@ -51,6 +51,7 @@ const userSchema =new mongoose.Schema({
         }
 });
 
-const User =new mongoose.model('User',userSchema); 
+// const User =new mongoose.model('User',userSchema); 
+const User =new mongoose.model('testinguser',userSchema); 
 
 module.exports = User;  // export na korle onno jaiga theke access kora jabe na
