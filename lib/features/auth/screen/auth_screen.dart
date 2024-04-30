@@ -1,6 +1,7 @@
 import 'package:amazon_clone/common/widget/customButton.dart';
 import 'package:amazon_clone/common/widget/custom_textfield.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
+import 'package:amazon_clone/services/auth_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,12 +19,18 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  final AuthService authService = AuthService();
   final _nameController = TextEditingController();
   final _passwordController = TextEditingController();
   final _emailController = TextEditingController();
   final _signInFormkey = GlobalKey<FormState>();
   final _signUpFormkey = GlobalKey<FormState>();
   Auth _auth = Auth.signUp;
+
+  void signUpUser()
+  {
+    authService.signUpUser(context: context, email: _emailController.text, name: _nameController.text, password: _passwordController.text);
+  }
   @override
   void dispose() {
     // TODO: implement dispose
@@ -76,7 +83,9 @@ class _AuthScreenState extends State<AuthScreen> {
                             CustomTextField(controller: _passwordController, hintText: "Password"),
                             SizedBox(height: 10,),
                             CustomButton(text: 'SignUp', onTap: (){
-          
+          if(_signUpFormkey.currentState!.validate()){
+            signUpUser();
+          }
                             })
           
                           ],
