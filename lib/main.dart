@@ -1,3 +1,4 @@
+import 'package:amazon_clone/common/widget/bottom_bar.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
 import 'package:amazon_clone/features/auth/screen/auth_screen.dart';
 import 'package:amazon_clone/features/home/screen/home_screen.dart';
@@ -50,7 +51,8 @@ class _MyAppState extends State<MyApp> {
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
         // Now user already login thakle directly homescreen a niye jabe
-        home:Provider.of<UserProvider>(context,listen: true).user.token.isNotEmpty ? const HomeScreen() :const AuthScreen()
+
+        home:Provider.of<UserProvider>(context).user.token.isNotEmpty ? const BottomBar() :const AuthScreen()
     );
   }
 }
