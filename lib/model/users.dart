@@ -40,7 +40,7 @@ class User{
 
   String toJson()=> jsonEncode(toMap());  // backend e pathanor jonno json ke encode korbe
 
-  factory User.fromJson(String source) => User.fromJson(jsonDecode(source));
+  factory User.fromJson(String source) => User.fromMap(jsonDecode(source));
 
 
 }

@@ -1,15 +1,32 @@
 import 'package:amazon_clone/constants/global_variable.dart';
 import 'package:amazon_clone/features/auth/screen/auth_screen.dart';
+import 'package:amazon_clone/features/home/screen/home_screen.dart';
+import 'package:amazon_clone/provider/user_provider.dart';
 import 'package:amazon_clone/router.dart';
+import 'package:amazon_clone/services/auth_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(create: (context) => UserProvider(),)
+  ],child: const MyApp()));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  final AuthService authService = AuthService();
+  @override
+  void initState() {
+    authService.getUserData(context); // app run hoyar sathe sathe user er data load hobe
+    super.initState();
+  }
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -32,7 +49,8 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         onGenerateRoute: (settings) => generateRoute(settings),
-        home: AuthScreen()
+        // Now user already login thakle directly homescreen a niye jabe
+        home:Provider.of<UserProvider>(context,listen: true).user.token.isNotEmpty ? const HomeScreen() :const AuthScreen()
     );
   }
 }
