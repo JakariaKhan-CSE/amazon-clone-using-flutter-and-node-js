@@ -20,16 +20,20 @@ class _BelowAppBarState extends State<BelowAppBar> {
         gradient: GlobalVariables.appBarGradient,
       ),
       padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
-      child: RichText(
-        text: TextSpan(
-          text: 'Hello, ',
-          style: TextStyle(fontSize: 22, color: Colors.black),
-          children: [
-            TextSpan(
-            text: user.name,
-            style: TextStyle(fontSize: 22, color: Colors.black),),
-          ]
-        ),
+      child: Row( // aikhane ro na dile sudhu left side jekhane text ase ooitar background color ashsilo bakita white
+        children: [
+          RichText(
+            text: TextSpan(
+              text: 'Hello, ',
+              style: TextStyle(fontSize: 22, color: Colors.black),
+              children: [
+                TextSpan(
+                text: user.name,
+                style: TextStyle(fontSize: 22, color: Colors.black),),
+              ]
+            ),
+          ),
+        ],
       ),
     );
   }
