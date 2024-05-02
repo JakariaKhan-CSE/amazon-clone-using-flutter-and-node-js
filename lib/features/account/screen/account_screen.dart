@@ -1,5 +1,6 @@
 import 'package:amazon_clone/constants/global_variable.dart';
 import 'package:amazon_clone/features/account/widget/below_app_bar.dart';
+import 'package:amazon_clone/features/account/widget/top_button.dart';
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -52,7 +53,10 @@ class _AccountScreenState extends State<AccountScreen> {
       ),
       body: Column(
         children: [
-          BelowAppBar()
+          BelowAppBar(),
+          SizedBox(height: 10,),
+          TopButton(),
+          SizedBox(height: 20,),
         ],
       ),
     );

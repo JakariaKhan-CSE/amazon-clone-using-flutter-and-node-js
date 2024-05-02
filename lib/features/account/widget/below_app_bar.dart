@@ -29,7 +29,7 @@ class _BelowAppBarState extends State<BelowAppBar> {
               children: [
                 TextSpan(
                 text: user.name,
-                style: TextStyle(fontSize: 22, color: Colors.black),),
+                style: TextStyle(fontSize: 22, color: Colors.black, fontWeight: FontWeight.w600),),
               ]
             ),
           ),
