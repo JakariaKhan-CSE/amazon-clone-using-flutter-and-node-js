@@ -1,9 +1,8 @@
 import 'package:amazon_clone/features/home/widget/address_box.dart';
-import 'package:amazon_clone/provider/user_provider.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:amazon_clone/features/home/widget/carousal_image.dart';
+import 'package:amazon_clone/features/home/widget/deal_of_day.dart';
+import 'package:amazon_clone/features/home/widget/top_categories.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../constants/global_variable.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -17,14 +16,14 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
+
     return Scaffold(
       appBar: PreferredSize(
         // default appbar na niye  aita neyar karon hosse appbar er height issa moto korbo
-        preferredSize: Size.fromHeight(60), // aitar size joto dibo appbar er size totp hobe
+        preferredSize: const Size.fromHeight(60), // aitar size joto dibo appbar er size totp hobe
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: Container(
                   height: 42,
-                    margin: EdgeInsets.only(left: 15),
+                    margin: const EdgeInsets.only(left: 15),
                   child: Material(
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
@@ -42,24 +41,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: (){
 
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.only(left: 6),
+                          child: const Padding(
+                            padding: EdgeInsets.only(left: 6),
                             child: Icon(Icons.search,color: Colors.black,size: 23,),
                           ),
                         ),
                         filled: true,
                         fillColor: Colors.white,
-                        contentPadding: EdgeInsets.only(top: 10),
+                        contentPadding: const EdgeInsets.only(top: 10),
                         border: OutlineInputBorder(
 borderRadius: BorderRadius.circular(7),
                           borderSide: BorderSide.none
                         ),
                         enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(7),
-                            borderSide: BorderSide(color: Colors.black38,width: 1)
+                            borderSide: const BorderSide(color: Colors.black38,width: 1)
                         ),
                         hintText: 'Search Amazon.in',
-                        hintStyle: TextStyle(
+                        hintStyle: const TextStyle(
                           fontSize: 17,
                           fontWeight: FontWeight.w600
                         )
@@ -73,8 +72,8 @@ borderRadius: BorderRadius.circular(7),
               Container(
                 height: 42,
                 color: Colors.transparent,
-                padding: EdgeInsets.symmetric(horizontal: 10),
-                child: Icon(Icons.mic,color: Colors.black,size: 25,),
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: const Icon(Icons.mic,color: Colors.black,size: 25,),
               )
 
             ],
@@ -83,11 +82,18 @@ borderRadius: BorderRadius.circular(7),
         ),
 
       ),
-      body: Column(
-        children: [
-        AddressBox(),
-
-        ],
+      body: SingleChildScrollView(
+        child: const Column(
+          children: [
+          AddressBox(),
+            SizedBox(height: 10,),
+            TopCategories(),
+            SizedBox(height: 10,),
+            CarousalImage(),
+            DealOfDay(),
+        
+          ],
+        ),
       ),
     );
   }
