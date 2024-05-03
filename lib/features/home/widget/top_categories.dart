@@ -7,7 +7,7 @@ class TopCategories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 60,  // height mention na korle error dibe
       child: ListView.builder(
         itemExtent: 75,// each item 75 kore extend hobe
         scrollDirection: Axis.horizontal,
