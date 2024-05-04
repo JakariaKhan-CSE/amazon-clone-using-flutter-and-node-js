@@ -3,6 +3,7 @@ import 'dart:io'; // not import dart:html, only import this from another action
 import 'package:amazon_clone/common/widget/customButton.dart';
 import 'package:amazon_clone/common/widget/custom_textfield.dart';
 import 'package:amazon_clone/constants/utils.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +50,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
     var res = await pickImages();
     setState(() {
       images = res;
+
     });
   }
   @override
@@ -87,7 +89,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                GestureDetector(
+               images.isNotEmpty?  CarouselSlider(
+          items: images.map((i) {
+        return Image.file(i,fit: BoxFit.cover,height: 200,);
+        }).toList(),
+        options: CarouselOptions(
+            viewportFraction: 1,  // aita na dile screen a 2 ta picture cole ashse. aita diyer pore screen a akta picture show korbe
+            height: 200
+        )
+
+      ) :GestureDetector(
                   onTap: selectImage,
                   child: DottedBorder(
                       strokeCap: StrokeCap.round,

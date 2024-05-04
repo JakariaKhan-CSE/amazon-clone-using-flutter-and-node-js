@@ -18,13 +18,20 @@ Future<List<File>> pickImages() async {
     FilePickerResult? result = await FilePicker.platform
         .pickFiles(type: FileType.image, allowMultiple: true);
 
-    if (result != null) {
-      List<File> images = result.paths.map((path) => File(path!)).toList();
+    if (result != null && result.files.isNotEmpty) {
+
+     for(int i=0; i<result.files.length; i++) // this technique is working
+       {
+
+         images.add(File(result.files[i].path!));
+       }
     } else {
+
       // User canceled the picker
     }
   } catch (e) {
     debugPrint(e.toString());
   }
+
   return images;
 }
