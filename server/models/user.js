@@ -51,7 +51,7 @@ const userSchema =new mongoose.Schema({
         }
 });
 
-// const User =new mongoose.model('User',userSchema); 
-const User =new mongoose.model('testinguser',userSchema); 
+const User =new mongoose.model('Users',userSchema);   // Users nam e collection/table create hobe. automatically s add kore user+s
+// const User =new mongoose.model('testinguser',userSchema); 
 
 module.exports = User;  // export na korle onno jaiga theke access kora jabe na

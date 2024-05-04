@@ -1,5 +1,6 @@
 import 'package:amazon_clone/common/widget/bottom_bar.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
+import 'package:amazon_clone/features/admin/screen/admin_screen.dart';
 import 'package:amazon_clone/features/auth/screen/auth_screen.dart';
 import 'package:amazon_clone/features/home/screen/home_screen.dart';
 import 'package:amazon_clone/provider/user_provider.dart';
@@ -52,7 +53,9 @@ class _MyAppState extends State<MyApp> {
         onGenerateRoute: (settings) => generateRoute(settings),
         // Now user already login thakle directly homescreen a niye jabe
 
-        home:Provider.of<UserProvider>(context).user.token.isNotEmpty ? const BottomBar() :const AuthScreen()
+        home:Provider.of<UserProvider>(context).user.token.isNotEmpty ? // token empty hole direct auth screen jabe. empty na hole type check kore dkhbe user hole userscreen na hole admin screen
+        ( Provider.of<UserProvider>(context).user.type == 'user'? const BottomBar() : AdminScreen())
+            :const AuthScreen()
     );
   }
 }
