@@ -3,14 +3,15 @@ import 'dart:io'; // not import dart:html, only import this from another action
 import 'package:amazon_clone/common/widget/customButton.dart';
 import 'package:amazon_clone/common/widget/custom_textfield.dart';
 import 'package:amazon_clone/constants/utils.dart';
+import 'package:amazon_clone/features/admin/services/admin_services.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+
 
 import '../../../constants/global_variable.dart';
-import '../../../provider/user_provider.dart';
+
 
 class AddProductScreen extends StatefulWidget {
   static const String routeName = '/add-product';
@@ -22,10 +23,12 @@ class AddProductScreen extends StatefulWidget {
 
 class _AddProductScreenState extends State<AddProductScreen> {
   List<File> images = [];
+  final _addProductFormKey = GlobalKey<FormState>();
   final TextEditingController productNameController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
   final TextEditingController priceController = TextEditingController();
   final TextEditingController quantityController = TextEditingController();
+  AdminServices adminServices = AdminServices();
 
   @override
   void dispose() {
@@ -46,6 +49,20 @@ class _AddProductScreenState extends State<AddProductScreen> {
     'Fashion'
   ];
 
+  void sellProduct()
+  {
+    if(_addProductFormKey.currentState!.validate() && images.isNotEmpty) // form filled thakte hobe and image non empty thakte hobe
+      {
+        adminServices.sellProducts(context: context, name: productNameController.text,
+            description: descriptionController.text,
+            price: double.parse(priceController.text),
+            quantity: double.parse(quantityController.text),
+            category: category,
+            images: images);
+      }
+
+  }
+
   void selectImage()async{
     var res = await pickImages();
     setState(() {
@@ -55,16 +72,16 @@ class _AddProductScreenState extends State<AddProductScreen> {
   }
   @override
   Widget build(BuildContext context) {
-    final user = Provider.of<UserProvider>(context).user;
+
     return Scaffold(
       appBar: PreferredSize(
         // default appbar na niye  aita neyar karon hosse appbar er height issa moto korbo
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
-          title: Text(
+          title: const Text(
             'Add Product',
             style: TextStyle(color: Colors.black, fontWeight: FontWeight.w500),
           ),
@@ -73,7 +90,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.arrow_back_ios,
               size: 22,
             ),
@@ -82,11 +99,12 @@ class _AddProductScreenState extends State<AddProductScreen> {
       ),
       body: SingleChildScrollView(
         child: Form(
+          key: _addProductFormKey,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Column(
               children: [
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                images.isNotEmpty?  CarouselSlider(
@@ -104,8 +122,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                       strokeCap: StrokeCap.round,
                       borderType: BorderType
                           .RRect, // default rectangle thake aitake rounded korarar jonno aita
-                      radius: Radius.circular(10),
-                      dashPattern: [
+                      radius: const Radius.circular(10),
+                      dashPattern: const [
                         10,
                         4
                       ], // prothom ta each dotted er size barabe, r 2 number ta dotted number barabe
@@ -117,11 +135,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.folder_open,
                               size: 40,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 15,
                             ),
                             Text(
@@ -133,13 +151,13 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         ),
                       )),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
                 CustomTextField(
                     controller: productNameController,
                     hintText: 'Product Name'),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomTextField(
@@ -147,11 +165,11 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   hintText: 'Description',
                   maxline: 7,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomTextField(controller: priceController, hintText: 'Price'),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 CustomTextField(
@@ -160,7 +178,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                     width: double.infinity,  // entire width a click korlei dropdown show korbe
                     child: DropdownButton(
                       value: category,
-                      icon: Icon(Icons.arrow_drop_down_outlined),
+                      icon: const Icon(Icons.arrow_drop_down_outlined),
                       items: productCategories.map((String item) {
                         return DropdownMenuItem(value: item, child: Text(item));
                       }).toList(),
@@ -170,10 +188,8 @@ class _AddProductScreenState extends State<AddProductScreen> {
                         });
                       },
                     )),
-                SizedBox(height: 10,),
-                CustomButton(text: 'Sell', onTap: (){
-
-                })
+                const SizedBox(height: 10,),
+                CustomButton(text: 'Sell', onTap: sellProduct)
               ],
             ),
           ),
