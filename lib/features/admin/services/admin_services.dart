@@ -44,6 +44,7 @@ class AdminServices{
           images: imageUrls,
           category: category,
           price: price);
+          // POST products with image
          http.Response res =await http.post(Uri.parse('$url/admin/add-product'),
             headers: <String, String>{
               'Content-Type': 'application/json; charset=UTF-8',
@@ -62,5 +63,8 @@ class AdminServices{
       print('this is catch block error: ${e.toString()}');
       showSnackbar(context, e.toString(), Colors.red);
     }
-  }
+  },
+
+  // GET ALL THE PRODUCTS
+
 }
