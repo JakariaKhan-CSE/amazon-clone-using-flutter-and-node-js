@@ -89,6 +89,7 @@ Future<List<Product>> fetchAllProduct(BuildContext context)async{
           {
             // print('loop ${i} product add working');
             products.add(Product.fromMap(jsonDecode(res.body)[i]));
+            // i get error long time here
           }
       });
     }
