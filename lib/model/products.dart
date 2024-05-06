@@ -31,7 +31,7 @@ class Product{
         name: map['name'] ?? '',  // value null hole '' assign hobe (?? '')
         description: map['description']??'',
         quantity: map['quantity']?.toDouble()??0.0,  // double a convert kora hosse null hole 0.0 assign hobe
-        images: map['images']??'',
+        images: List<String>.from(map['images'] ?? []),  // see carefully
         category: map['category']??'',
         price: map['price']?.toDouble()??0.0,
       id: map['_id'],     // mongodb database a _id aivabe thake

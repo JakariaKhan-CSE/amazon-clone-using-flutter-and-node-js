@@ -28,5 +28,17 @@ try {
 }
 });
 
+// Get all your product
+adminRouter.get('/admin/get-products', admin ,async(req,res)=>{ // only admin can access it
+try {
+    console.log('Request product from client');
+    const products =await Product.find();          // get all data from database
+    console.log('products is: '+products);
+    res.json(products);
+} catch (err) {
+    res.status(500).json({error: err.message});
+}
+});
+
 module.exports = adminRouter;
 

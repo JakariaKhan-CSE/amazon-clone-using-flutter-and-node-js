@@ -1,4 +1,5 @@
 // for Admin api calling
+import 'dart:convert';
 import 'dart:io';
 import 'package:amazon_clone/constants/error_handling.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
@@ -29,7 +30,7 @@ class AdminServices{
 
           for(int i=0; i<images.length; i++)
             {
-              print('for loop: ${i}, images path: ${images[i].path}');
+              // print('for loop: ${i}, images path: ${images[i].path}');
               CloudinaryResponse res = await  cloudinery.uploadFile(
                 CloudinaryFile.fromFile(images[i].path, folder: name) //name(product) er folder er vitor sob image add hobr
               );
@@ -60,11 +61,45 @@ class AdminServices{
          });
     }catch(e)
     {
-      print('this is catch block error: ${e.toString()}');
+
       showSnackbar(context, e.toString(), Colors.red);
     }
-  },
+  }
 
-  // GET ALL THE PRODUCTS
+  // FETCH ALL THE PRODUCTS
+Future<List<Product>> fetchAllProduct(BuildContext context)async{
+    List<Product> products = [];
+    final userProvider = Provider.of<UserProvider>(context,listen: false);
+    try
+    {
+
+      http.Response res = await http.get(Uri.parse('$url/admin/get-products'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': userProvider.user.token
+        },
+      );
+
+      httpErrorHandling(response: res, context: context, onSuccess: (){
+
+
+        // print('jsonDecode(res.body).length: ${jsonDecode(res.body).length}');
+     
+        for(int i=0; i<jsonDecode(res.body).length; i++)  // total list(decode kora not object) er length
+          {
+            // print('loop ${i} product add working');
+            products.add(Product.fromMap(jsonDecode(res.body)[i]));
+          }
+      });
+    }
+    catch(e)
+  {
+    showSnackbar(context, e.toString(), Colors.red);
+  }
+    
+    
+    // print('before return product. is length: ${products.length}');
+    return products;
+}
 
 }
