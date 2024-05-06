@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:amazon_clone/constants/error_handling.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
 import 'package:amazon_clone/provider/user_provider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'package:amazon_clone/constants/utils.dart';
 import 'package:amazon_clone/model/products.dart';
@@ -101,6 +102,35 @@ Future<List<Product>> fetchAllProduct(BuildContext context)async{
     
     // print('before return product. is length: ${products.length}');
     return products;
+}
+
+// DELETE PRODUCT, also delete database and frontend delete from products list
+void deleteProduct({required BuildContext context,
+required Product product,
+  required  VoidCallback onSuccess
+})async{
+  final userProvider = Provider.of<UserProvider>(context,listen: false);
+  try{
+
+    http.Response res =await http.post(Uri.parse('$url/admin/delete-product'),
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': userProvider.user.token
+        },
+        body:  jsonEncode({
+        'id': product.id
+      })      // sudhu product id sent kora hosse body er vitore. Before send any json data to backend needed to jsonEncoded
+
+    );
+
+    httpErrorHandling(response: res, context: context, onSuccess: (){
+     onSuccess();
+    });
+  }catch(e)
+  {
+
+    showSnackbar(context, e.toString(), Colors.red);
+  }
 }
 
 }

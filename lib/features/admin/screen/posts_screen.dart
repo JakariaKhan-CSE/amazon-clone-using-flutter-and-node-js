@@ -28,9 +28,20 @@ class _PostScreensState extends State<PostScreens> {
   fetchAllProduct()async{
    products =  await adminServices.fetchAllProduct(context);
     setState(() {
-
+// kisu na dileo notun kore rebuild kore
     });
   }
+
+  void DeleteProduct(Product product, int index){
+    adminServices.deleteProduct(context: context, product: product, onSuccess: (){
+      products?.removeAt(index);  // frontend er list theke product delete kora hosse
+      setState(() {
+        // rebuild korbe
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return products == null? const Loader()  : Scaffold(
@@ -48,7 +59,8 @@ class _PostScreensState extends State<PostScreens> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Expanded(child: Text(productData.name,overflow: TextOverflow.ellipsis,maxLines: 2,)),
-                IconButton(onPressed: (){}, icon: Icon(Icons.delete_outline,size: 22,))
+                IconButton(onPressed: ()=>DeleteProduct(productData,index), icon: Icon(Icons.delete_outline,size: 22,))
+              // sudhu aita DeleteProduct lekhleo hoto. auto niye nito
               ],
             )
           ],
