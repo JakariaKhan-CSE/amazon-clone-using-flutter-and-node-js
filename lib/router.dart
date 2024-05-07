@@ -2,6 +2,7 @@ import 'package:amazon_clone/features/admin/screen/add_product_screen.dart';
 import 'package:amazon_clone/features/auth/screen/auth_screen.dart';
 import 'package:amazon_clone/features/home/screen/category_deals_screen.dart';
 import 'package:amazon_clone/features/home/screen/home_screen.dart';
+import 'package:amazon_clone/features/search/screen/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'common/widget/bottom_bar.dart';
@@ -14,25 +15,25 @@ Route<dynamic> generateRoute(RouteSettings routeSettings)
       {
         return MaterialPageRoute(
           settings: routeSettings,
-          builder: (_) => AuthScreen(),);
+          builder: (_) => const AuthScreen(),);
       }
     case HomeScreen.routeName:
       {
         return MaterialPageRoute(
           settings: routeSettings,
-          builder: (_) => HomeScreen(),);
+          builder: (_) => const HomeScreen(),);
       }
     case BottomBar.routeName:
       {
         return MaterialPageRoute(
           settings: routeSettings,
-          builder: (_) => BottomBar(),);
+          builder: (_) => const BottomBar(),);
       }
     case AddProductScreen.routeName:
       {
         return MaterialPageRoute(
           settings: routeSettings,
-          builder: (context) => AddProductScreen(),);
+          builder: (context) => const AddProductScreen(),);
       }
     case CategoryDealScreen.routeName:
       {
@@ -41,11 +42,18 @@ Route<dynamic> generateRoute(RouteSettings routeSettings)
           settings: routeSettings,
           builder: (context) => CategoryDealScreen(category: category),);
       }
+    case SearchScreen.routeName:
+      {
+        var searchQuery = routeSettings.arguments as String;
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (context) => SearchScreen(searchQuery: searchQuery,),);
+      }
 
 
     default:
       {
-        return MaterialPageRoute(builder: (_) => Scaffold(
+        return MaterialPageRoute(builder: (_) => const Scaffold(
           body: Center(child: Text('Screen does not exist'),),
         ),);
       }

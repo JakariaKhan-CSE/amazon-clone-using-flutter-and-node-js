@@ -46,7 +46,7 @@ BottomNavigationBarItem(icon: Container(
           ,width: bottomBarBorderwidth
     ))
   ),
-  child: Icon(Icons.home_outlined),
+  child: const Icon(Icons.home_outlined),
 
 ),label: ''),
         BottomNavigationBarItem(icon: Container(
@@ -57,7 +57,7 @@ BottomNavigationBarItem(icon: Container(
                   ,width: bottomBarBorderwidth
               ))
           ),
-          child: Icon(Icons.person_outline_outlined),
+          child: const Icon(Icons.person_outline_outlined),
 
         ),label: ''),
         BottomNavigationBarItem(icon: Container(
@@ -69,7 +69,7 @@ BottomNavigationBarItem(icon: Container(
               ))
           ),
             
-              child: badges.Badge(
+              child: const badges.Badge(
                   badgeContent: Text('3'),
 badgeStyle: badges.BadgeStyle(
   elevation: 0,

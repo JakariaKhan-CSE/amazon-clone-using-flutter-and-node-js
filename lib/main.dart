@@ -2,7 +2,7 @@ import 'package:amazon_clone/common/widget/bottom_bar.dart';
 import 'package:amazon_clone/constants/global_variable.dart';
 import 'package:amazon_clone/features/admin/screen/admin_screen.dart';
 import 'package:amazon_clone/features/auth/screen/auth_screen.dart';
-import 'package:amazon_clone/features/home/screen/home_screen.dart';
+
 import 'package:amazon_clone/provider/user_provider.dart';
 import 'package:amazon_clone/router.dart';
 import 'package:amazon_clone/services/auth_service.dart';

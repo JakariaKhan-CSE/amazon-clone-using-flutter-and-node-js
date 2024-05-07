@@ -4,6 +4,7 @@ import 'package:amazon_clone/features/home/widget/deal_of_day.dart';
 import 'package:amazon_clone/features/home/widget/top_categories.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/global_variable.dart';
+import '../../search/screen/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = '/home';
@@ -14,6 +15,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  void navigateToSearchScreen(String query)
+  {
+    Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -36,6 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
+                      onFieldSubmitted: navigateToSearchScreen, // very important onFieldSubmitted
                       decoration: InputDecoration(
                         prefixIcon: InkWell(
                           onTap: (){
@@ -82,8 +88,8 @@ borderRadius: BorderRadius.circular(7),
         ),
 
       ),
-      body: SingleChildScrollView(
-        child: const Column(
+      body: const SingleChildScrollView(
+        child: Column(
           children: [
           AddressBox(),
             SizedBox(height: 10,),

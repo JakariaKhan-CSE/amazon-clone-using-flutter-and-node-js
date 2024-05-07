@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
     style: ElevatedButton.styleFrom(
       backgroundColor: GlobalVariables.secondaryColor.withOpacity(0.5),
       foregroundColor: GlobalVariables.backgroundColor,
-      minimumSize: Size(double.infinity, 50)
+      minimumSize: const Size(double.infinity, 50)
     ),
     );
   }

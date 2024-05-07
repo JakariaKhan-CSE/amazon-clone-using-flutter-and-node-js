@@ -78,7 +78,7 @@ return GestureDetector(
      ),),
       Container(
         alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 0,top: 5,right: 15),
+        padding: EdgeInsets.only(left: 5,top: 5,right: 15),
         child: Text(product.name,maxLines: 1,overflow: TextOverflow.ellipsis,),
       )
     ],
