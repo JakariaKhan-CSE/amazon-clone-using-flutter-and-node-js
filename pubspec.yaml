@@ -44,6 +44,7 @@ dependencies:
   file_picker: ^8.0.3
   cloudinary_public: ^0.23.1
   json_serializable: ^6.8.0
+  flutter_rating_bar: ^4.0.1
   ### cloudinary: ^1.2.0    # ALSO use cloudinary website for host images
 
 

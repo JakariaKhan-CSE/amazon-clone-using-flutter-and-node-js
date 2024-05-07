@@ -25,14 +25,14 @@ Row(
   mainAxisAlignment: MainAxisAlignment.spaceBetween,
   children: [
     Container(
-      padding: EdgeInsets.only(left: 15),
-      child: Text('Your Orders',style: TextStyle(
+      padding: const EdgeInsets.only(left: 15),
+      child: const Text('Your Orders',style: TextStyle(
         fontSize: 18,
         fontWeight: FontWeight.w600
       ),),
     ),
     Container(
-      padding: EdgeInsets.only(right: 15),
+      padding: const EdgeInsets.only(right: 15),
       child: Text('See all',style: TextStyle(
         color: GlobalVariables.selectedNavBarColor
       ),),
@@ -42,7 +42,7 @@ Row(
         // display orders
         Container(
           height: 170,  // listview builder use kora hobe height na dile render overflow error dibe
-          padding: EdgeInsets.only(left: 10,top: 20,right: 0),
+          padding: const EdgeInsets.only(left: 10,top: 20,right: 0),
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: list.length,

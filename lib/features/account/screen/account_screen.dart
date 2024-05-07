@@ -17,16 +17,16 @@ class _AccountScreenState extends State<AccountScreen> {
     return Scaffold(
       appBar: PreferredSize(
         // default appbar na niye  aita neyar karon hosse appbar er height issa moto korbo
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                // alignment: Alignment.topRight,
+                alignment: Alignment.topRight,
                 child: Image.asset(
                   'assets/images/amazon_in.png',
                   width: 120,
@@ -34,14 +34,14 @@ class _AccountScreenState extends State<AccountScreen> {
                   color: Colors.black,
                 ),
               ),
-              Row(
+              const Row(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 15),
+                    padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Icon(Icons.notification_add_outlined),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(right: 20),
+                    padding: EdgeInsets.only(right: 20),
                     child: Icon(Icons.search),
                   ),
                 ],
@@ -52,7 +52,7 @@ class _AccountScreenState extends State<AccountScreen> {
         ),
 
       ),
-      body: Column(
+      body: const Column(
         children: [
           BelowAppBar(),
           SizedBox(height: 10,),

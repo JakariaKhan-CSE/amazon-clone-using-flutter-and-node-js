@@ -23,7 +23,7 @@ class _AdminScreenState extends State<AdminScreen> {
     });
   }
   List<Widget> pages = [
-    PostScreens(),
+    const PostScreens(),
     const Center(child: Text('Analytics page'),),
     const Center(child: Text('Cart page'),),
   ];
@@ -33,10 +33,10 @@ class _AdminScreenState extends State<AdminScreen> {
     return Scaffold(
       appBar: PreferredSize(
         // default appbar na niye  aita neyar karon hosse appbar er height issa moto korbo
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +51,7 @@ class _AdminScreenState extends State<AdminScreen> {
                 ),
               ),
               Container(
-                child: Text(user.type,style: TextStyle(
+                child: Text(user.type,style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,fontWeight: FontWeight.bold
                 ),),
@@ -80,7 +80,7 @@ class _AdminScreenState extends State<AdminScreen> {
                     ,width: bottomBarBorderwidth
                 ))
             ),
-            child: Icon(Icons.home_outlined),
+            child: const Icon(Icons.home_outlined),
 
           ),label: ''),
           // ANALYTICS
@@ -92,7 +92,7 @@ class _AdminScreenState extends State<AdminScreen> {
                     ,width: bottomBarBorderwidth
                 ))
             ),
-            child: Icon(Icons.analytics_outlined),
+            child: const Icon(Icons.analytics_outlined),
 
           ),label: ''),
           // ORDERS
@@ -105,7 +105,7 @@ class _AdminScreenState extends State<AdminScreen> {
                   ))
               ),
 
-              child: badges.Badge(
+              child: const badges.Badge(
                   badgeContent: Text('3'),
                   badgeStyle: badges.BadgeStyle(
                     elevation: 0,

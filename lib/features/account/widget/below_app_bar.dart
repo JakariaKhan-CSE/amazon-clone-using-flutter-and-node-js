@@ -16,20 +16,20 @@ class _BelowAppBarState extends State<BelowAppBar> {
   Widget build(BuildContext context) {
     final user = Provider.of<UserProvider>(context).user; // always use provider below of widget build(BuildContext context); upore dile conetxt error ashbe
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: GlobalVariables.appBarGradient,
       ),
-      padding: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+      padding: const EdgeInsets.only(left: 10,right: 10,bottom: 10),
       child: Row( // aikhane ro na dile sudhu left side jekhane text ase ooitar background color ashsilo bakita white
         children: [
           RichText(
             text: TextSpan(
               text: 'Hello, ',
-              style: TextStyle(fontSize: 22, color: Colors.black),
+              style: const TextStyle(fontSize: 22, color: Colors.black),
               children: [
                 TextSpan(
                 text: user.name,
-                style: TextStyle(fontSize: 22, color: Colors.black, fontWeight: FontWeight.w600),),
+                style: const TextStyle(fontSize: 22, color: Colors.black, fontWeight: FontWeight.w600),),
               ]
             ),
           ),
