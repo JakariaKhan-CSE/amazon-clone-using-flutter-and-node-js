@@ -59,7 +59,31 @@ class _CategoryDealScreenState extends State<CategoryDealScreen> {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,childAspectRatio: 1.4,mainAxisSpacing: 10
             ), itemBuilder: (context, index) {
               final product = Categoryproducts?[index];
-return Text('Hello ${index}');
+return GestureDetector(
+  onTap: (){
+
+  },
+  child: Column(
+    children: [
+     SizedBox(height: 130,
+     child: DecoratedBox(
+       decoration: BoxDecoration(
+         border: Border.all(color: Colors.black38,width: 0.5),
+
+       ),
+       child: Padding(
+         padding: EdgeInsets.all(10),
+         child: Image.network(product!.images[0]),
+       ),
+     ),),
+      Container(
+        alignment: Alignment.topLeft,
+        padding: EdgeInsets.only(left: 0,top: 5,right: 15),
+        child: Text(product.name,maxLines: 1,overflow: TextOverflow.ellipsis,),
+      )
+    ],
+  ),
+);
             },),)
         ],
       ),
