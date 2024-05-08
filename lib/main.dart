@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Amazone clone',
+        darkTheme: ThemeData.light(),
         theme: ThemeData(
           scaffoldBackgroundColor: GlobalVariables
               .backgroundColor, // all new scaffold er background color aita hobe

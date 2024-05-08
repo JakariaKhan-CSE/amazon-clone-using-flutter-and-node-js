@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constants/global_variable.dart';
 import '../../../model/products.dart';
+import '../../products_details/screen/product_details_screen.dart';
 
 class CategoryDealScreen extends StatefulWidget {
   static const String routeName = '/category-deals';
@@ -33,35 +34,35 @@ class _CategoryDealScreenState extends State<CategoryDealScreen> {
     return Scaffold(
       appBar: PreferredSize(
         // default appbar na niye  aita neyar karon hosse appbar er height issa moto korbo
-        preferredSize: Size.fromHeight(50),
+        preferredSize: const Size.fromHeight(50),
         child: AppBar(
           flexibleSpace: Container(
-            decoration: BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
-          title: Text(widget.category,style: TextStyle(color: Colors.black),)
+          title: Text(widget.category,style: const TextStyle(color: Colors.black),)
 
         ),
 
       ),
-      body: Categoryproducts==null ? Loader() : Column(
+      body: Categoryproducts==null ? const Loader() : Column(
         children: [
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 10),
             alignment: Alignment.topLeft,
-            child: Text('Keep Shopping for ${widget.category}',style: TextStyle(
+            child: Text('Keep Shopping for ${widget.category}',style: const TextStyle(
               color: Colors.black, fontSize: 20
             ),),
           ),
           SizedBox(height: 170,
             child: GridView.builder(itemCount: Categoryproducts?.length,
               scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.only(left: 15),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,childAspectRatio: 1.4,mainAxisSpacing: 10
+              padding: const EdgeInsets.only(left: 15),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,childAspectRatio: 1.4,mainAxisSpacing: 10
             ), itemBuilder: (context, index) {
               final product = Categoryproducts?[index];
 return GestureDetector(
   onTap: (){
-
+    Navigator.pushNamed(context, ProductDetailsScreen.routeName, arguments: product);
   },
   child: Column(
     children: [
@@ -72,13 +73,13 @@ return GestureDetector(
 
        ),
        child: Padding(
-         padding: EdgeInsets.all(10),
+         padding: const EdgeInsets.all(10),
          child: Image.network(product!.images[0]),
        ),
      ),),
       Container(
         alignment: Alignment.topLeft,
-        padding: EdgeInsets.only(left: 5,top: 5,right: 15),
+        padding: const EdgeInsets.only(left: 5,top: 5,right: 15),
         child: Text(product.name,maxLines: 1,overflow: TextOverflow.ellipsis,),
       )
     ],

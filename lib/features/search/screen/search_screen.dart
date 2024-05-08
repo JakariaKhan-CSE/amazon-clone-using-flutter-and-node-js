@@ -43,7 +43,7 @@ class _SearchScreenState extends State<SearchScreen> {
         child: AppBar(
           leading: IconButton(onPressed: (){
             Navigator.pop(context);
-          },icon: Icon(Icons.arrow_back_ios),),
+          },icon: const Icon(Icons.arrow_back_ios),),
           flexibleSpace: Container(
             decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
@@ -107,7 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: products == null ?const Loader()  : Column(
         children: [
-          AddressBox(),
+          const AddressBox(),
           const SizedBox(height: 10,),
           Expanded(  // listview builder er size na bole dile eror dei. ai karone expanded deya hoyese jate tar issa moto space nei
               child: ListView.builder(
