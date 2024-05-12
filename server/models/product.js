@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ratingSchema = require('./rating');
 
 const productSchema =new mongoose.Schema({
     name:{
@@ -11,7 +12,7 @@ const productSchema =new mongoose.Schema({
         required: true,
         trim: true
     },
-    images: [
+    images: [           // images hosse array
         {
             type: String,
             required: true
@@ -30,10 +31,9 @@ const productSchema =new mongoose.Schema({
     category:{
         type: String,
         required: true
-    }
-    // rating in later
+    },
+    rating: [ratingSchema]   // akta schema neya hosse array er vitore
 });
 
 const Product = mongoose.model('Products',productSchema); // Products name a akta collection(table) create hobe database
-
 module.exports = Product;

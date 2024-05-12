@@ -52,7 +52,7 @@ class AuthService {
 
   // signIn user
   void signInUser({
-    // aivabe likhle constructor lage na. So class er onject create a kono jhamela nei. alada function er parameter constructor er moto use kra hosse
+    // aivabe likhle constructor lage na. So class er object create a kono jhamela nei. alada function er parameter constructor er moto use kra hosse
     required BuildContext context,
     required String email,
     required String password,

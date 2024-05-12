@@ -33,5 +33,35 @@ productRouter.get("/api/products/search/:name", auth, async (req, res) => {
   }
 });
 
+// create api for rating product
+productRouter.post("/api/rate-product", auth, async(req,res)=>{
+  try {
+    const {id,rating}= req.body;
+    let product = await Product.findById(id);
+
+    for(let i=0; i<product.rating.length; i++)
+      {
+        if(product.rating[i].userId == req.user)
+          {
+            product.rating.splice(i,1);
+            break;
+          }
+
+      }
+
+      const ratingSchema = {
+        userId: req.user,
+        rating                  // rating : rating
+      };
+
+      product.rating.push(ratingSchema);
+      product = await product.save();
+      res.json(product);
+    
+  } catch (e) {
+    res.status(500).json({ error: e.message });
+  }
+});
+
 // router ke index er sathe connect korte hobe
 module.exports = productRouter; // aita index.js file a na dile error dibe

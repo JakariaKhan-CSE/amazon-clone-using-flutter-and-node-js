@@ -60,14 +60,14 @@ class _CategoryDealScreenState extends State<CategoryDealScreen> {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 1,childAspectRatio: 1.4,mainAxisSpacing: 10
             ), itemBuilder: (context, index) {
               final product = Categoryproducts?[index];
-return GestureDetector(
-  onTap: (){
-    Navigator.pushNamed(context, ProductDetailsScreen.routeName, arguments: product);
-  },
-  child: Column(
-    children: [
-     SizedBox(height: 130,
-     child: DecoratedBox(
+      return GestureDetector(
+        onTap: (){
+          Navigator.pushNamed(context, ProductDetailsScreen.routeName, arguments: product);
+        },
+        child: Column(
+          children: [
+           SizedBox(height: 130,
+           child: DecoratedBox(
        decoration: BoxDecoration(
          border: Border.all(color: Colors.black38,width: 0.5),
 
@@ -76,15 +76,15 @@ return GestureDetector(
          padding: const EdgeInsets.all(10),
          child: Image.network(product!.images[0]),
        ),
-     ),),
+           ),),
       Container(
         alignment: Alignment.topLeft,
         padding: const EdgeInsets.only(left: 5,top: 5,right: 15),
         child: Text(product.name,maxLines: 1,overflow: TextOverflow.ellipsis,),
       )
-    ],
-  ),
-);
+          ],
+        ),
+      );
             },),)
         ],
       ),

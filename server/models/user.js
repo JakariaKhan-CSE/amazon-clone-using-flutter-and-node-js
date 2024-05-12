@@ -42,7 +42,7 @@ const userSchema =new mongoose.Schema({
         },
         address:{
             type: String,
-            default: ""  // this is not required so. dafault add null
+            default: ""  // this is not required so. default add null
         },
         type:
         {

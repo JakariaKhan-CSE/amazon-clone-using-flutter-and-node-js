@@ -55,15 +55,15 @@ class _AuthScreenState extends State<AuthScreen> {
         backgroundColor: GlobalVariables.greyBackgroundCOlor,
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   'Welcome',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.w500),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 ListTile(
@@ -71,7 +71,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   tileColor: _auth == Auth.signUp
                       ? GlobalVariables.backgroundColor
                       : GlobalVariables.greyBackgroundCOlor,
-                  title: Text(
+                  title: const Text(
                     'Create Account',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -88,7 +88,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 if (_auth == Auth.signUp)
                   Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     color: GlobalVariables.backgroundColor,
                     child: Form(
                         key: _signUpFormkey,
@@ -96,19 +96,19 @@ class _AuthScreenState extends State<AuthScreen> {
                           children: [
                             CustomTextField(
                                 controller: _nameController, hintText: "Name"),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             CustomTextField(
                                 controller: _emailController,
                                 hintText: "Email"),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             CustomTextField(
                                 controller: _passwordController,
                                 hintText: "Password"),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             CustomButton(
@@ -125,7 +125,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   tileColor: _auth == Auth.signin
                       ? GlobalVariables.backgroundColor
                       : GlobalVariables.greyBackgroundCOlor,
-                  title: Text(
+                  title: const Text(
                     'Sign-In',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
@@ -142,7 +142,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
                 if (_auth == Auth.signin)
                   Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     color: GlobalVariables.backgroundColor,
                     child: Form(
                         key: _signInFormkey,
@@ -151,13 +151,13 @@ class _AuthScreenState extends State<AuthScreen> {
                             CustomTextField(
                                 controller: _emailController,
                                 hintText: "Email"),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             CustomTextField(
                                 controller: _passwordController,
                                 hintText: "Password"),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             CustomButton(
