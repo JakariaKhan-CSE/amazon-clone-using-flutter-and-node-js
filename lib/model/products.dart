@@ -17,6 +17,7 @@ class Product{
 
   Map<String,dynamic> toMap()
   {
+
     return {
       'name': name,
       'description': description,
@@ -31,6 +32,7 @@ class Product{
 
   factory Product.fromMap(Map<String,dynamic> map)
   {
+
     return Product(
         name: map['name'] ?? '',  // value null hole '' assign hobe (?? '')
         description: map['description']??'',
@@ -39,14 +41,15 @@ class Product{
         category: map['category']??'',
         price: map['price']?.toDouble()??0.0,
       id: map['_id'],     // mongodb database a _id aivabe thake
-      rating: map['ratings'] != null
+      rating: map['rating'] != null
           ? List<Rating>.from(
-        map['ratings']?.map(
+        map['rating']?.map(
               (x) => Rating.fromMap(x),
         ),
       )
           : null,
     );
+
   }
 
   String toJson()=>json.encode(toMap());  // map a convert hoye oita jsonencode hobe backend jawar jonno

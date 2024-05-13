@@ -36,6 +36,7 @@ productRouter.get("/api/products/search/:name", auth, async (req, res) => {
 // create api for rating product
 productRouter.post("/api/rate-product", auth, async(req,res)=>{
   try {
+    
     const {id,rating}= req.body;
     let product = await Product.findById(id);
 
@@ -56,6 +57,7 @@ productRouter.post("/api/rate-product", auth, async(req,res)=>{
 
       product.rating.push(ratingSchema);
       product = await product.save();
+      
       res.json(product);
     
   } catch (e) {

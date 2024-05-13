@@ -30,6 +30,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   void initState() {
     double totalRating = 0;
+
     if(widget.product.rating != null)
       {
         for(int i=0; i<widget.product.rating!.length; i++)
