@@ -11,6 +11,21 @@ class SearchProduct extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double totalRating = 0;
+
+    if(product.rating != null)
+    {
+      for(int i=0; i<product.rating!.length; i++)
+      {
+        totalRating += product.rating![i].rating;
+
+      }
+    }
+    double avgRating=0;
+    if(totalRating != 0)
+    {
+      avgRating = totalRating/product.rating!.length;
+    }
     return GestureDetector(
       onTap: (){
         Navigator.pushNamed(context, ProductDetailsScreen.routeName, arguments: product);
@@ -43,7 +58,7 @@ class SearchProduct extends StatelessWidget {
                           )),
                       Container(
                           margin: const EdgeInsets.only(left: 10,top: 5),
-                          child: const Stars(rating: 4,)
+                          child:  Stars(rating: avgRating,)
                       ),
                       Container(
                           margin: const EdgeInsets.only(left: 10,top: 5),
