@@ -11,40 +11,68 @@ import '../../../constants/global_variable.dart';
 import '../../../constants/utils.dart';
 import '../../../provider/user_provider.dart';
 
-class HomeServices{
-  Future<List<Product>> fetchCategoryProduct({required BuildContext context, required String category})async{
+class HomeServices {
+  Future<List<Product>> fetchCategoryProduct(
+      {required BuildContext context, required String category}) async {
     List<Product> products = [];
-    final userProvider = Provider.of<UserProvider>(context,listen: false);
-    try
-    {
-
-      http.Response res = await http.get(Uri.parse('$url/api/products?category=$category'),
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    try {
+      http.Response res = await http.get(
+        Uri.parse('$url/api/products?category=$category'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token
         },
       );
 
-      httpErrorHandling(response: res, context: context, onSuccess: (){
+      httpErrorHandling(
+          response: res,
+          context: context,
+          onSuccess: () {
+            // print('jsonDecode(res.body).length: ${jsonDecode(res.body).length}');
 
-
-        // print('jsonDecode(res.body).length: ${jsonDecode(res.body).length}');
-
-        for(int i=0; i<jsonDecode(res.body).length; i++)  // total list(decode kora not object) er length
+            for (int i = 0;
+                i < jsonDecode(res.body).length;
+                i++) // total list(decode kora not object) er length
             {
-          // print('loop ${i} product add working');
-          products.add(Product.fromMap(jsonDecode(res.body)[i]));
-          // i get error long time here
-        }
-      });
-    }
-    catch(e)
-    {
+              // print('loop ${i} product add working');
+              products.add(Product.fromMap(jsonDecode(res.body)[i]));
+              // i get error long time here
+            }
+          });
+    } catch (e) {
       showSnackbar(context, e.toString(), Colors.red);
     }
 
-
     // print('before return product. is length: ${products.length}');
     return products;
+  }
+
+  Future<Product> fetchDealofDay({required BuildContext context}) async {
+    Product product = Product(
+        name: '',
+        description: '',
+        quantity: 0,
+        images: [],
+        category: '',
+        price: 0);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
+    try {
+      http.Response res = await http.get(
+        Uri.parse('$url/api/deal-of-day'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+          'x-auth-token': userProvider.user.token
+        },
+      );
+
+      httpErrorHandling(response: res, context: context, onSuccess: () {
+        product = Product.fromJson(res.body);
+      });
+    } catch (e) {
+      showSnackbar(context, e.toString(), Colors.red);
+    }
+
+   return product;
   }
 }
