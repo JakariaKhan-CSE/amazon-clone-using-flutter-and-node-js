@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const {productSchema} = require('./product')
 
 const userSchema =new mongoose.Schema({
         name: {
@@ -48,7 +49,16 @@ const userSchema =new mongoose.Schema({
         {
             type: String,
             default: "user"  // default admin dhora hosse na. User dhora hosse
-        }
+        },
+        cart : [
+            {
+                product: productSchema,
+                quantity: {
+                    type: Number,
+                    required: true
+                }
+            }
+        ]
 });
 
 const User =new mongoose.model('Users',userSchema);   // Users nam e collection/table create hobe. automatically s add kore user+s

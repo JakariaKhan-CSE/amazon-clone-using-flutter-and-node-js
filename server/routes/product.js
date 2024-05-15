@@ -1,7 +1,7 @@
 const express = require("express");
 const productRouter = express.Router();
 const auth = require("../middleware/auth");
-const Product = require("../models/product"); // import model name
+const {Product} = require("../models/product"); // import model name
 
 // Get all category  product
 // /api/product?category=fashion               req.query.category

@@ -10,6 +10,7 @@ const DB = 'mongodb+srv://jakaria:w2A7f62jqN3kNVYs@cluster0.pcdlcay.mongodb.net/
 const authRouter = require('./routes/auth');
 const adminRouter = require('./routes/admin');
 const productRouter = require('./routes/product');  // very important
+const userRouter = require('./routes/user');
 const app = express();
 
 
@@ -18,7 +19,8 @@ app.use(express.json());
 
 app.use(authRouter);
 app.use(adminRouter);
-app.use(productRouter);
+app.use(productRouter);   // very important
+app.use(userRouter);
 
 // Connections
 mongoose.connect(DB).then(()=>{

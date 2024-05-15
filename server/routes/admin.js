@@ -1,7 +1,7 @@
 const express = require('express');
 const adminRouter = express.Router();
 const admin = require('../middleware/admin');
-const Product = require('../models/product');
+const {Product} = require('../models/product');
 
 // post api (add product)
 adminRouter.post('/admin/add-product', admin, async(req,res)=>{  // function call hole (admin) authrized kina check hobe

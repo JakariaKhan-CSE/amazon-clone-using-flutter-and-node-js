@@ -36,4 +36,4 @@ const productSchema =new mongoose.Schema({
 });
 
 const Product = mongoose.model('Products',productSchema); // Products name a akta collection(table) create hobe database
-module.exports = Product;
+module.exports = {Product,productSchema};
