@@ -10,7 +10,35 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
+import '../../../model/users.dart';
+
 class ProductDetailsServices{
+  void addToCart({
+    required BuildContext context,
+    required Product product,
+
+
+  })async{
+    final userProvider = Provider.of<UserProvider>(context,listen: false);
+    try{
+      http.Response res = await http.post(Uri.parse('$url/api/rate-product'),
+          headers: {
+            'Content-Type': 'application/json; charset=UTF-8',
+            'x-auth-token': userProvider.user.token
+          },body:jsonEncode({
+            'id': product.id,     // product id and rating body te send hosse
+
+          }) );
+
+      httpErrorHandling(response: res, context: context, onSuccess: (){
+        User.fromMap(jsonDecode(res.body));
+      });
+    }catch(e)
+    {
+      showSnackbar(context, e.toString(), Colors.red);
+    }
+  }
+
   void rateProduct({
     required BuildContext context,
     required Product product,

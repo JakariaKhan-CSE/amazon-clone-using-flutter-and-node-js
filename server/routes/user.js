@@ -26,7 +26,20 @@ userRouter.post('/api/add-to-cart', auth, async(req,res)=>{  // function call ho
                                 isProductFound = true;
                             }
                     }
+
+                    if(isProductFound)
+                        {
+                            let producttt = user.cart.find((productt)=>{
+                                productt.product._id.equals(product._id);
+                            });
+                            producttt.quantity += 1;
+                        }
+                        else{
+                            user.cart.push({product, quantity:1});
+                        }
             }
+            user = await user.save();
+            res.json(user);
         
     } catch (e) {
         res.status(500).json({error: e.message});
