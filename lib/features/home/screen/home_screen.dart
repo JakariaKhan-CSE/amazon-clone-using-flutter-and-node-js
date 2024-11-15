@@ -15,20 +15,21 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  void navigateToSearchScreen(String query)
-  {
+  void navigateToSearchScreen(String query) {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: PreferredSize(
         // default appbar na niye  aita neyar karon hosse appbar er height issa moto korbo
-        preferredSize: const Size.fromHeight(60), // aitar size joto dibo appbar er size totp hobe
+        preferredSize: const Size.fromHeight(
+            60), // aitar size joto dibo appbar er size totp hobe
         child: AppBar(
           flexibleSpace: Container(
-            decoration: const BoxDecoration(gradient: GlobalVariables.appBarGradient),
+            decoration:
+                const BoxDecoration(gradient: GlobalVariables.appBarGradient),
           ),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,68 +37,69 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: Container(
                   height: 42,
-                    margin: const EdgeInsets.only(left: 15),
+                  margin: const EdgeInsets.only(left: 15),
                   child: Material(
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
                     child: TextFormField(
-                      onFieldSubmitted: navigateToSearchScreen, // very important onFieldSubmitted
+                      onFieldSubmitted:
+                          navigateToSearchScreen, // very important onFieldSubmitted
                       decoration: InputDecoration(
-                        prefixIcon: InkWell(
-                          onTap: (){
-
-                          },
-                          child: const Padding(
-                            padding: EdgeInsets.only(left: 6),
-                            child: Icon(Icons.search,color: Colors.black,size: 23,),
+                          prefixIcon: InkWell(
+                            onTap: () {},
+                            child: const Padding(
+                              padding: EdgeInsets.only(left: 6),
+                              child: Icon(
+                                Icons.search,
+                                color: Colors.black,
+                                size: 23,
+                              ),
+                            ),
                           ),
-                        ),
-                        filled: true,
-                        fillColor: Colors.white,
-                        contentPadding: const EdgeInsets.only(top: 10),
-                        border: OutlineInputBorder(
-borderRadius: BorderRadius.circular(7),
-                          borderSide: BorderSide.none
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(7),
-                            borderSide: const BorderSide(color: Colors.black38,width: 1)
-                        ),
-                        hintText: 'Search Amazon.in',
-                        hintStyle: const TextStyle(
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600
-                        )
-                      ),
-
+                          filled: true,
+                          fillColor: Colors.white,
+                          contentPadding: const EdgeInsets.only(top: 10),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(7),
+                              borderSide: BorderSide.none),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(7),
+                              borderSide: const BorderSide(
+                                  color: Colors.black38, width: 1)),
+                          hintText: 'Search Amazon.in',
+                          hintStyle: const TextStyle(
+                              fontSize: 17, fontWeight: FontWeight.w600)),
                     ),
                   ),
-                
                 ),
               ),
               Container(
                 height: 42,
                 color: Colors.transparent,
                 padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(Icons.mic,color: Colors.black,size: 25,),
+                child: const Icon(
+                  Icons.mic,
+                  color: Colors.black,
+                  size: 25,
+                ),
               )
-
             ],
           ),
-
         ),
-
       ),
       body: const SingleChildScrollView(
         child: Column(
           children: [
-          AddressBox(),
-            SizedBox(height: 10,),
+            AddressBox(),
+            SizedBox(
+              height: 10,
+            ),
             TopCategories(),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             CarousalImage(),
             DealOfDay(),
-        
           ],
         ),
       ),

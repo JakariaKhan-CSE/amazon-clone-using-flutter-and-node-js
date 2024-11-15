@@ -44,6 +44,10 @@ productRouter.post("/api/rate-product", auth, async(req,res)=>{
       {
         if(product.rating[i].userId == req.user)
           {
+            /*
+            The splice() method adds and/or removes array elements.
+The splice() method overwrites the original array.
+            */
             product.rating.splice(i,1);
             break;
           }

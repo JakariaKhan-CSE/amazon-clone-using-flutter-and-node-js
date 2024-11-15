@@ -25,6 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
   Auth _auth = Auth.signUp;
 
   void signUpUser() {
+
     authService.signUpUser(
         context: context,
         email: _emailController.text,
@@ -115,6 +116,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                 text: 'SignUp',
                                 onTap: () {
                                   if (_signUpFormkey.currentState!.validate()) {
+                                   print('sign up btn click');
                                     signUpUser();
                                   }
                                 })

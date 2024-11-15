@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // this is my laptop ipv4 address. find cmd ipconfig. 3000 is port number which defined by node js
-String url = 'http://10.0.0.102:3000';   //10.0.0.101  mess wifi
+String url = 'http://10.0.0.100:3000';   //10.0.0.101  mess wifi
 //192.168.0.104
 // String url = 'http://192.168.0.106:3000';   //home wifi
 class GlobalVariables {
@@ -48,6 +48,7 @@ class GlobalVariables {
       'title': 'Fashion',
       'image': 'assets/images/fashion.jpeg',
     },
+
   ];
 
 }

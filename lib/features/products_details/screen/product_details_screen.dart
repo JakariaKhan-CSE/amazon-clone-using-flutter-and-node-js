@@ -79,7 +79,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                     elevation: 1,
                     child: TextFormField(
                       onFieldSubmitted:
-                          navigateToSearchScreen, // very important onFieldSubmitted
+                          navigateToSearchScreen, // very important onFieldSubmitted( detect keyboard enter hit to run)
                       decoration: InputDecoration(
                           prefixIcon: InkWell(
                             onTap: () {},
